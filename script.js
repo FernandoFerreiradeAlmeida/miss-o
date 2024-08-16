@@ -15,7 +15,7 @@ const perguntas = [
     },
     {
     texto:"A poluição tem um efeito positivo na resistência física dos atletas",
-    afirmacao:"Atividades físicas ao ar livre em áreas poluídas podem aumentar o risco"
+    afirmacao:"Atividades físicas ao ar livre em áreas poluídas podem aumentar o risco de problemas de saúde, especialmente em crianças e idosos"
 
     ]
     }
