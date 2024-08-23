@@ -8,6 +8,9 @@ const perguntas = [
     {
      enunciado:"Qual o impacto da poluição do ar na saúde de praticantes de esportes ao ar livre?"
      alternativas:[
+
+
+
     }
     {
     texto:"A poluição pode aumentar o risco de doenças respiratórias e cardiovasculares",
@@ -17,36 +20,45 @@ const perguntas = [
     texto:"A poluição tem um efeito positivo na resistência física dos atletas",
     afirmacao:"Atividades físicas ao ar livre em áreas poluídas podem aumentar o risco de problemas de saúde, especialmente em crianças e idosos"
 
-    ]
+       ]
     }
 ];
 
-let atual =0;
+let atual = 0;
 let perguntaAtual;
-let historiaFinal="";
+let historiaFinal = "";
 
-function mostraPergunta(){
+function mostraPergunta() {
+    if(atual >= perguntas.length){
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
+    textoResultado.textContent = "";
     mostraAlternativas();
 }
 
 function mostraAlternativas(){
-    for (const altwenativa of perguntaAtual.alternativas){
-        const botaoAlternativas = documento.createElement("button");
-        botaoAlternativas.textContent = alternativa;
-        botaoAlternativas.addEventListener('click', ()=>respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativas);
-
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener('click', ()=> respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);        
     }
-
-} 
-
-function respostaSelecionada0(opcaoSelecionada){
+}
+function respostaSelecionada(opcaoSelecionada){
     const afirmacao = opcaoSelecionada.afirmacao;
     historiaFinal = afirmacao;
     atual++
     mostraPergunta();
 }
+
 mostraPergunta();
+
+function mostraResultado(){
+    caixaPerguntas.textContent = "Em 2030...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
